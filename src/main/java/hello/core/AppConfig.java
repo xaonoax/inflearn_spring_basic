@@ -24,16 +24,19 @@ public class AppConfig {  // 애플리케이션에 대한 환경 구성에 대�
 
     @Bean
     public MemberService memberService() {  // 멤버서비스 역할
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
     public MemberRepository memberRepository() {  // 멤버리포지토리 역할
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
     public OrderService orderService() {  // 주문서비스 역할
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 

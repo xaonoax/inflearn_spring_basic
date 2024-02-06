@@ -18,4 +18,9 @@ public class MemberServiceImpl implements MemberService{
     public Member findMember(Long memberId) {  // 매개변수로 전달받은 memberId를 이용하여 memberRepository의 findById 메서드를 호출하여 회원을 찾는다.
         return memberRepository.findById(memberId);
     }
+
+    // 테스트 용도
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
 }

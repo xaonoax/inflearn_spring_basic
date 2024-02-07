@@ -1,10 +1,15 @@
 package hello.core.member;
 
-public class MemberServiceImpl implements MemberService{
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MemberServiceImpl implements MemberService {
 
 //    private final MemberRepository memberRepository = new MemoryMemberRepository();  // 구현체가 없으면 nullPointException이 발생한다.
     private final MemberRepository memberRepository;
 
+    @Autowired  // ac.getBean(MemberRepository.class)처럼 동작 한다.
     public MemberServiceImpl(MemberRepository memberRepository) { // MemberRepository에 어떤 구현체가 들어갈지 생성자를 통해서 선택한다.
         this.memberRepository = memberRepository;
     }

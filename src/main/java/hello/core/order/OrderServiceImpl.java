@@ -5,6 +5,7 @@ import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public class OrderServiceImpl implements OrderService {
 
@@ -15,9 +16,10 @@ public class OrderServiceImpl implements OrderService {
     private final DiscountPolicy discountPolicy;
 
     @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy rateDiscountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository,
+                            @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
-        this.discountPolicy = rateDiscountPolicy;
+        this.discountPolicy = discountPolicy;
     }
 
     @Override
